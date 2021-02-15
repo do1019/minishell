@@ -6,7 +6,7 @@
 /*   By: dogata <dogata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 18:46:21 by dogata            #+#    #+#             */
-/*   Updated: 2021/02/16 01:38:42 by dogata           ###   ########.fr       */
+/*   Updated: 2021/02/16 01:49:10 by dogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,16 +132,16 @@ char	*read_command_line(void)
 		exit(EXIT_FAILURE);
 	}
 	*line = '\0';
-	printf("test\n"); //
+	//printf("test\n"); //
 	while ((rt = read(0, buffer, BUFFER_SIZE)) > 0)
 	{
-		printf("%d\n", rt);
-		printf("in loop\n");
+		//printf("%d\n", rt);
+		//printf("in loop\n");
 		loop_count++;
-		buffer[rt] = '\0';
-		printf("in loop2\n");
-		printf("line = %s\n", line);
-		printf("buf = %s\n", buffer);
+		buffer[rt - 1] = '\0';
+		//printf("in loop2\n");
+		//printf("line = %s\n", line);
+		//printf("buf = %s\n", buffer);
 		if (!(line = ft_free_strjoin(line, buffer)))
 		{
 			errornum = errno;
@@ -153,7 +153,7 @@ char	*read_command_line(void)
 		}
 		if (rt < BUFFER_SIZE || loop_count > 256)
 			break;
-		printf("line = %s\n", line);
+		//printf("line = %s\n", line);
 	}
 	if (loop_count > 256)
 	{
