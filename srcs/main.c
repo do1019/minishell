@@ -6,7 +6,7 @@
 /*   By: dogata <dogata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 18:46:21 by dogata            #+#    #+#             */
-/*   Updated: 2021/02/16 01:18:16 by dogata           ###   ########.fr       */
+/*   Updated: 2021/02/16 01:19:58 by dogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void	minishell_loop(void)
 	status = 1;
 	while (status)
 	{
-		write(1, "minishell: ", 13);
+		write(1, "minishell: ", 12);
 		printf("test1"); //
 		line = read_command_line();
 		args = split_command_line(line);
