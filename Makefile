@@ -6,7 +6,7 @@
 #    By: dogata <dogata@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/14 18:40:41 by dogata            #+#    #+#              #
-#    Updated: 2021/02/16 00:18:10 by dogata           ###   ########.fr        #
+#    Updated: 2021/02/16 00:23:18 by dogata           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,10 @@ NAME_LIBFT := libft.a
 LIBFT_DIR := libft/
 
 SRCS := srcs/main.c \
+		srcs/run_echo.c \
+		srcs/run_env.c \
+		srcs/run_exit.c \
+		srcs/run_pwd.c \
 
 OBJS := $(SRCS:.c=.o)
 
