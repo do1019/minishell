@@ -6,7 +6,7 @@
 /*   By: dogata <dogata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 18:46:21 by dogata            #+#    #+#             */
-/*   Updated: 2021/02/16 01:19:58 by dogata           ###   ########.fr       */
+/*   Updated: 2021/02/16 01:24:02 by dogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,14 +132,17 @@ char	*read_command_line(void)
 		exit(EXIT_FAILURE);
 	}
 	*line = '\0';
-	printf("test2\n"); //
+	printf("test\n"); //
 	while ((rt = read(0, buffer, BUFFER_SIZE)) > 0)
 	{
-		printf("test3\n");
+		printf("in loop\n");
 		if (loop_count > 256)
 			break;
 		loop_count++;
 		buffer[rt] = '\0';
+		printf("in loop2\n");
+		printf("line = %s\n", line);
+		printf("buf = %s\n", buffer);
 		if (!(line = ft_free_strjoin(line, buffer)))
 		{
 			errornum = errno;
@@ -188,7 +191,6 @@ void	minishell_loop(void)
 	while (status)
 	{
 		write(1, "minishell: ", 12);
-		printf("test1"); //
 		line = read_command_line();
 		args = split_command_line(line);
 		status = execute(args);
