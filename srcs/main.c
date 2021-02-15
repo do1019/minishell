@@ -6,7 +6,7 @@
 /*   By: dogata <dogata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 18:46:21 by dogata            #+#    #+#             */
-/*   Updated: 2021/02/16 01:28:28 by dogata           ###   ########.fr       */
+/*   Updated: 2021/02/16 01:30:11 by dogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ char	*read_command_line(void)
 	printf("test\n"); //
 	while ((rt = read(0, buffer, BUFFER_SIZE)) > 0)
 	{
+		printf("%d\n", rt);
 		printf("in loop\n");
 		if (loop_count > 256)
 			break;
