@@ -6,7 +6,7 @@
 /*   By: dogata <dogata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 18:46:21 by dogata            #+#    #+#             */
-/*   Updated: 2021/02/16 01:49:10 by dogata           ###   ########.fr       */
+/*   Updated: 2021/02/16 01:56:41 by dogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int		launch(char **args)
 	if (pid == 0)
 	{
 		if (execvp(args[0], args) == -1)
-			perror("lsh");
+			perror("minishell");
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
-		perror("lsh");
+		perror("minishell");
 	else
 	{
 		while (WIFEXITED(status) && !WIFSIGNALED(status))
@@ -109,7 +109,6 @@ char	*read_command_line(void)
 {
 	char	*buffer;
 	char	*line;
-	//char	*tmp_line;
 	int		errornum;
 	int		rt;
 	int		loop_count;
@@ -132,16 +131,10 @@ char	*read_command_line(void)
 		exit(EXIT_FAILURE);
 	}
 	*line = '\0';
-	//printf("test\n"); //
 	while ((rt = read(0, buffer, BUFFER_SIZE)) > 0)
 	{
-		//printf("%d\n", rt);
-		//printf("in loop\n");
 		loop_count++;
 		buffer[rt - 1] = '\0';
-		//printf("in loop2\n");
-		//printf("line = %s\n", line);
-		//printf("buf = %s\n", buffer);
 		if (!(line = ft_free_strjoin(line, buffer)))
 		{
 			errornum = errno;
@@ -151,9 +144,8 @@ char	*read_command_line(void)
 			free(buffer);
 			exit(EXIT_FAILURE);
 		}
-		if (rt < BUFFER_SIZE || loop_count > 256)
+		if ((rt - 1) <= BUFFER_SIZE || loop_count > 256)
 			break;
-		//printf("line = %s\n", line);
 	}
 	if (loop_count > 256)
 	{
