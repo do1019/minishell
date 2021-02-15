@@ -6,7 +6,7 @@
 /*   By: dogata <dogata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 18:46:21 by dogata            #+#    #+#             */
-/*   Updated: 2021/02/15 23:48:05 by dogata           ###   ########.fr       */
+/*   Updated: 2021/02/16 01:11:13 by dogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,10 @@ char	*read_command_line(void)
 		exit(EXIT_FAILURE);
 	}
 	*line = '\0';
-	while ((rt = read(0, buffer, BUFFER_SIZE)) > 0 && loop_count < 256)
+	while ((rt = read(0, buffer, BUFFER_SIZE)) > 0)
 	{
+		if (loop_count > 256)
+			break;
 		loop_count++;
 		buffer[rt] = '\0';
 		if (!(line = ft_free_strjoin(line, buffer)))
@@ -146,7 +148,7 @@ char	*read_command_line(void)
 			exit(EXIT_FAILURE);
 		}
 	}
-	if (loop_count == 256)
+	if (loop_count > 256)
 	{
 		write(2, "minishell: ", 12);
 		write(2, "Argument list too long\n", 24);
@@ -171,7 +173,7 @@ char	*read_command_line(void)
 		return (line);
 	}
 	free(buffer);
-	return(line);
+	return (line);
 }
 
 void	minishell_loop(void)
@@ -183,7 +185,7 @@ void	minishell_loop(void)
 	status = 1;
 	while (status)
 	{
-		printf("minishell: ");
+		write(1, "minishell: ", 13);
 		line = read_command_line();
 		args = split_command_line(line);
 		status = execute(args);
