@@ -6,7 +6,7 @@
 /*   By: dogata <dogata@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 18:46:21 by dogata            #+#    #+#             */
-/*   Updated: 2021/02/16 01:24:02 by dogata           ###   ########.fr       */
+/*   Updated: 2021/02/16 01:28:28 by dogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ char	*read_command_line(void)
 			free(buffer);
 			exit(EXIT_FAILURE);
 		}
+		printf("line = %s\n", line);
 	}
 	if (loop_count > 256)
 	{
