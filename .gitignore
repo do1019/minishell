@@ -1,0 +1,14 @@
+# Object file
+libft/*.o
+srcs/*.o
+
+# Archive file
+libft/libft.a
+
+# Executable file
+/minishell
+
+# test directory
+/test/
+
+
