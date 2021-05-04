@@ -1,6 +1,6 @@
 # minishell
 
-## 42 projects to make a simple bash
+## 42 project to make a simple bash
 
 ### ___builtin commands___
 
